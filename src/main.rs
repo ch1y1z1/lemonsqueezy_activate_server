@@ -49,6 +49,20 @@ async fn handle_request(request: Request) -> impl IntoResponse {
         }));
     }
 
+    if method == Method::POST && parts.uri.path() == "/api/licenses/activate" {
+        return Json(json!({
+            "success": true,
+            "message": "...",
+        }));
+    }
+
+    if method == Method::GET && parts.uri.path() == "/api/licenses/validate" {
+        return Json(json!({
+            "valid": true,
+            "message": "...",
+        }));
+    }
+
     Json(json!({ "ok": true }))
 }
 
